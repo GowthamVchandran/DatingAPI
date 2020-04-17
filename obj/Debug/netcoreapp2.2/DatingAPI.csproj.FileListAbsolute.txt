@@ -1,0 +1,16 @@
+D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\DatingAPI.deps.json
+D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\DatingAPI.runtimeconfig.json
+D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\DatingAPI.runtimeconfig.dev.json
+D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\DatingAPI.dll
+D:\API Core\DatingAPI\DatingAPI\obj\Debug\netcoreapp2.2\DatingAPI.csprojAssemblyReference.cache
+D:\API Core\DatingAPI\DatingAPI\obj\Debug\netcoreapp2.2\DatingAPI.RazorAssemblyInfo.cache
+D:\API Core\DatingAPI\DatingAPI\obj\Debug\netcoreapp2.2\DatingAPI.RazorAssemblyInfo.cs
+D:\API Core\DatingAPI\DatingAPI\obj\Debug\netcoreapp2.2\DatingAPI.AssemblyInfoInputs.cache
+D:\API Core\DatingAPI\DatingAPI\obj\Debug\netcoreapp2.2\DatingAPI.AssemblyInfo.cs
+D:\API Core\DatingAPI\DatingAPI\obj\Debug\netcoreapp2.2\DatingAPI.RazorTargetAssemblyInfo.cache
+D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\DatingAPI.pdb
+D:\API Core\DatingAPI\DatingAPI\obj\Debug\netcoreapp2.2\DatingAPI.dll
+D:\API Core\DatingAPI\DatingAPI\obj\Debug\netcoreapp2.2\DatingAPI.pdb
+D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\appsettings.Development.json
+D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\appsettings.json
+D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
