@@ -25,27 +25,29 @@ namespace DatingAPI.Controllers
                 _AuthRepository=AuthRepository;
                 _config=config;
         }
-
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto login)
         {
-            try
-            { 
+          //  try
+           // { 
+             
+              
             var UserLogin = await _AuthRepository.Login(login.UserName,login.Password);
 
              if(UserLogin == null)
-              return Unauthorized("User not authendicate");
+              throw new Exception("User Already exits");;
 
             string _token=  CreateToken(UserLogin);
 
               return Ok( new {
                   token = _token
               });
-            }
-            catch(Exception e)
-            {
-               return StatusCode(501,e.ToString());
-            }
+           // }
+            // catch(Exception)
+            // {
+            //    return StatusCode(501);
+            // }
          }
 
         
@@ -78,11 +80,11 @@ namespace DatingAPI.Controllers
         
         [HttpPost("Register")]
         public async Task<IActionResult> Register(RegisterDto user){
-     
+                 
             user.Username=user.Username.ToLower();
 
             if( await _AuthRepository.IsExists(user.Username))
-              return BadRequest("User already exists");
+              throw new Exception("User already exists");
 
             var userNameDto=new User{
                 UserName=user.Username

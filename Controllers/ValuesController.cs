@@ -21,8 +21,8 @@ namespace DatingAPI.Controllers
 
         }
         // GET api/values
-        [HttpGet]
-        [Route("Test")]
+        [AllowAnonymous]
+        [HttpGet("GetTest")]                
         public async Task<IActionResult> Get()
         {
             var result = await _context.UserValues.ToListAsync();
@@ -33,8 +33,7 @@ namespace DatingAPI.Controllers
 
         // GET api/values/5
         [AllowAnonymous]
-        [HttpGet]
-        [Route("Testid")]
+        [HttpGet("Testid")]        
         public async Task<IActionResult> Get(int id)
         {
             var getDetails = await _context.UserValues.FirstOrDefaultAsync(x => x.Id == id);
