@@ -32,18 +32,7 @@ namespace DatingAPI.Controllers
 
 
         // GET api/values/5
-        [AllowAnonymous]
-        [HttpGet("Testid")]        
-        public async Task<IActionResult> Get(int id)
-        {
-            var getDetails = await _context.UserValues.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (getDetails == null)
-                return BadRequest("Record doesn't exists");
-
-            return Ok(getDetails);
-
-        }
+     
 
         // POST api/values
         [HttpPost]
