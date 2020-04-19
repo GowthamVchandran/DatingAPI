@@ -62,8 +62,8 @@ namespace DatingAPI
             {
                // app.UseDeveloperExceptionPage();
             }
-         //   else
-          //  {
+            else
+            {
                app.UseExceptionHandler(builder => {
 
                    builder.Run( async context => 
@@ -82,9 +82,8 @@ namespace DatingAPI
 
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                // app.UseHsts();
-          //  }
-            app.UseCors(s => s.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            //app.UseHttpsRedirection();
+            }
+            app.UseCors(s => s.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());           
             app.UseAuthentication();
             app.UseMvc();
         }
