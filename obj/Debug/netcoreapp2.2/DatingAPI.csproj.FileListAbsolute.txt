@@ -14,3 +14,4 @@ D:\API Core\DatingAPI\DatingAPI\obj\Debug\netcoreapp2.2\DatingAPI.pdb
 D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\appsettings.Development.json
 D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\appsettings.json
 D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+D:\API Core\DatingAPI\DatingAPI\bin\Debug\netcoreapp2.2\Data\UserSeedData.json

@@ -23,5 +23,6 @@ namespace DatingAPI.Data
         }
         public DbSet<User> Users { get; set; }
         public DbSet<UserValue> UserValues { get; set; }
+        public DbSet<Photo> Photos { get; set; }
     }
 }

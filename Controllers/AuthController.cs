@@ -29,10 +29,7 @@ namespace DatingAPI.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto login)
         {
-          //  try
-           // { 
-             
-              
+         
             var UserLogin = await _AuthRepository.Login(login.UserName,login.Password);
 
              if(UserLogin == null)
@@ -43,11 +40,7 @@ namespace DatingAPI.Controllers
               return Ok( new {
                   token = _token
               });
-           // }
-            // catch(Exception)
-            // {
-            //    return StatusCode(501);
-            // }
+    
          }
 
         
