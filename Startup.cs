@@ -39,14 +39,17 @@ namespace DatingAPI
             services
           .AddDbContext<DataContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+             .AddJsonOptions(opt => {opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;});
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper(typeof(DatingRepository));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-             .AddJsonOptions(opt => {opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;});
+            
 
             services.AddScoped<IAuthRepository,AuthReposity>();
             services.AddScoped<IDatingRepository,DatingRepository>();
+            
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
               .AddJwtBearer(x=>{
@@ -90,7 +93,8 @@ namespace DatingAPI
             }
             app.UseCors(s => s.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());           
             app.UseAuthentication();
-            app.UseMvc();
+             app.UseMvc();
+            
         }
     }
 }

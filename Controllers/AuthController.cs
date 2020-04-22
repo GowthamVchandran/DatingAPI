@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DatingAPI.Data;
 using DatingAPI.Dtos;
 using DatingAPI.Model;
@@ -19,11 +20,14 @@ namespace DatingAPI.Controllers
     public class AuthController:ControllerBase
     {
         private readonly IAuthRepository _AuthRepository;
+
+         private readonly IMapper _mapper;
         private readonly IConfiguration _config;
-        public AuthController(IAuthRepository  AuthRepository,IConfiguration config)
+        public AuthController(IAuthRepository  AuthRepository,IConfiguration config,IMapper mapper)
         {
-                _AuthRepository=AuthRepository;
-                _config=config;
+                _AuthRepository = AuthRepository;
+                _config = config;
+                _mapper = mapper;
         }
         [AllowAnonymous]
         [HttpPost("login")]
@@ -33,12 +37,14 @@ namespace DatingAPI.Controllers
             var UserLogin = await _AuthRepository.Login(login.UserName,login.Password);
 
              if(UserLogin == null)
-              throw new Exception("User Already exits");;
+              throw new Exception("Please provide valid credentials");;
 
             string _token=  CreateToken(UserLogin);
 
+            var user = _mapper.Map<UserDetailDto>(UserLogin);
+
               return Ok( new {
-                  token = _token
+                  token = _token,user
               });
     
          }

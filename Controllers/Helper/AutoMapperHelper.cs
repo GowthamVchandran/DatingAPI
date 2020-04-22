@@ -22,6 +22,12 @@ namespace DatingAPI.Controllers.Helper
               .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.DOB.CalculateAge()));
               
             CreateMap<Photo,PhotoDetailDto>();
+
+            CreateMap<UserforupdateDto,User>();
+
+            CreateMap<photoForCreatingDto,Photo>();
+            
+            CreateMap<Photo,PhotoForReturnDto>();
         }
     }
 }
