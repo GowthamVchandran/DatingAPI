@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DatingAPI.Controllers.Helper;
 using DatingAPI.Data;
+using DatingAPI.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -61,6 +62,8 @@ namespace DatingAPI
                       ValidateAudience = false
                   };
               });
+
+              services.AddScoped<logUserActivity>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

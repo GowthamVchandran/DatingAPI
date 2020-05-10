@@ -35,8 +35,16 @@ namespace DatingAPI.Controllers
 
                 _cloudinary = new Cloudinary(acc);
         }
+        // [HttpGet("{id}")]
+        // public async Task<IActionResult> GetPhoto(int id)
+        // {
+        //       var photoFromRepo =  await  _DatingRepository.GetPhoto(id);
 
-        [HttpGet("{id}",Name="GetPhoto")]
+        //       var photo = _mapper.Map<PhotoForReturnDto>(photoFromRepo);
+
+        //       return Ok(photo);
+        // }
+        [HttpGet("{id}", Name="GetPhoto")]
         public async Task<IActionResult> GetPhoto(int id)
         {
               var photoFromRepo =  await  _DatingRepository.GetPhoto(id);
@@ -71,7 +79,7 @@ namespace DatingAPI.Controllers
                     uploadCouldResult = _cloudinary.Upload(uploadParams);
                 }
             }
-            photoForDto.Url= uploadCouldResult.Uri.ToString();
+            photoForDto.Url = uploadCouldResult.Uri.ToString();
             photoForDto.PublicId=uploadCouldResult.PublicId;
 
             var photo = _mapper.Map<Photo>(photoForDto);
@@ -136,8 +144,8 @@ namespace DatingAPI.Controllers
                 if(photoFromRepo.IsMain)
                   return BadRequest("you can't delete main photo");
 
-             if(photoFromRepo.PublicId!=null){
-
+             if(photoFromRepo.PublicId!=null)
+             {
               var deleteParams = new DeletionParams(photoFromRepo.PublicId);
 
               var result = _cloudinary.Destroy(deleteParams);
@@ -147,7 +155,9 @@ namespace DatingAPI.Controllers
               }
 
              }
-             if(photoFromRepo.PublicId == null){
+
+             if(photoFromRepo.PublicId == null)
+             {
                  _DatingRepository.Delete(photoFromRepo);
              }
 

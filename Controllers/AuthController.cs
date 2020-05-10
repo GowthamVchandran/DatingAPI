@@ -15,7 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace DatingAPI.Controllers
 {
     
-    [Route("api/[controller]")]
+    [Route("api/[Controller]/[action]")]
     [ApiController]
     public class AuthController:ControllerBase
     {
@@ -30,7 +30,7 @@ namespace DatingAPI.Controllers
                 _mapper = mapper;
         }
         [AllowAnonymous]
-        [HttpPost("login")]
+        [HttpPost]
         public async Task<IActionResult> Login(LoginDto login)
         {
          
@@ -48,9 +48,6 @@ namespace DatingAPI.Controllers
               });
     
          }
-
-        
-
         public string CreateToken(User UserLogin)
         {
           var claims = new []
@@ -77,21 +74,22 @@ namespace DatingAPI.Controllers
           return tokenHandler.WriteToken(token);
         }
         
-        [HttpPost("Register")]
-        public async Task<IActionResult> Register(RegisterDto user){
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterDto Register){
                  
-            user.Username=user.Username.ToLower();
+            Register.Username=Register.Username.ToLower();
 
-            if( await _AuthRepository.IsExists(user.Username))
+            if( await _AuthRepository.IsExists(Register.Username))
               throw new Exception("User already exists");
 
-            var userNameDto=new User{
-                UserName=user.Username
-            };  
-
-              await _AuthRepository.Register(userNameDto,user.Password);
+            var userNameDto= _mapper.Map<User>(Register);
             
-            return StatusCode(201);
+
+           var CreatedUser = await _AuthRepository.Register(userNameDto,Register.Password);
+
+            var userToReturn = _mapper.Map<UserDetailDto>(CreatedUser);
+            
+            return  CreatedAtRoute("getUserbyID",new {Controller="Users",id = CreatedUser.Id},userToReturn);
         }
     }
 }

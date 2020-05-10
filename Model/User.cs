@@ -22,5 +22,9 @@ namespace DatingAPI.Model
         public string City { get; set; }
         public string Country { get; set; }
         public ICollection<Photo> Photos { get; set; }
+        public ICollection<Likes> Likers { get; set; }
+        public ICollection<Likes> Likees { get; set; }
+        public ICollection<Message> MessageSent { get; set; }  
+        public ICollection<Message> MessageReceived { get; set; }  
     }
 }
