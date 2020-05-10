@@ -26,7 +26,7 @@ namespace DatingAPI
                 catch (Exception e)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(e+ " exception");
+                    logger.LogError(e + " exception");
                 }                
             }
 

@@ -27,7 +27,8 @@ namespace DatingAPI.Data
 
         public async Task<Photo> GetMainPhoto(int id)
         {
-            return await _context.Photos.Where(x => x.UserId == id).FirstOrDefaultAsync(p => p.IsMain);
+            return await _context.Photos.
+                Where(x => x.UserId == id).FirstOrDefaultAsync(p => p.IsMain);
         }
 
         public async Task<Photo> GetPhoto(int id)
@@ -37,7 +38,8 @@ namespace DatingAPI.Data
     
         public async Task<PageList<User>> GetUsers(userParams userParams)
         {
-           var UserResult =  _context.Users.Include(p =>p.Photos).OrderByDescending(x=>x.LastActive)
+           var UserResult =  _context.Users.Include(p =>p.Photos).
+                OrderByDescending(x=>x.LastActive)
            .AsQueryable();  
 
            UserResult = UserResult.Where(x =>x.Id!= userParams.UserId);
@@ -83,7 +85,8 @@ namespace DatingAPI.Data
 
         public async Task<User> GetUser(int Id)
         {
-            return await _context.Users.Include(p =>p.Photos).FirstOrDefaultAsync(x =>x.Id == Id);
+            return await _context.Users.Include(p =>p.Photos).
+                FirstOrDefaultAsync(x =>x.Id == Id);
             
         }
 
